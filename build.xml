@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<project name="checkfox" default="createxpi">
+
+  <property name="version" value="0.9.1"/>
+
+	<!--
+  <target name="createjar">
+    <delete file="${ant.project.name}.jar"/>
+    <zip destfile="${ant.project.name}.jar" basedir="."
+         includes="content/**"
+         excludes="*~"/>
+  </target>
+-->
+	
+  <target name="createxpi">
+    <delete file="${ant.project.name}-${version}.xpi"/>
+    <zip destfile="${ant.project.name}-${version}.xpi">
+    	<zipfileset dir="." includes="content/**" prefix="chrome"/>
+    	<!--
+      <zipfileset dir="." includes="${ant.project.name}.jar"
+                  prefix="chrome" />-->
+	   <zipfileset dir="." includes="install.rdf chrome.manifest" />
+	 </zip>
+  </target>
+
+</project>

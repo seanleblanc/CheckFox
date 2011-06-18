@@ -1,0 +1,2 @@
+content checkfox chrome/content/
+overlay chrome://browser/content/browser.xul chrome://checkfox/content/checkfox-Overlay.xul
