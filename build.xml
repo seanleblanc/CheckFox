@@ -2,26 +2,33 @@
 
 <project name="checkfox" default="createxpi">
 
-  <property name="version" value="0.9.1"/>
+  <!-- 
+    The version number of CheckFox. This value will be set 
+    within the install.rdf file AND determine the file name of the XPI.
+  -->
+  <property name="version" value="0.9.2"/>
 
-	<!--
-  <target name="createjar">
-    <delete file="${ant.project.name}.jar"/>
-    <zip destfile="${ant.project.name}.jar" basedir="."
-         includes="content/**"
-         excludes="*~"/>
-  </target>
--->
 	
   <target name="createxpi">
+    <!-- Set up CheckFox version inside install.rdf file. -->
+    <copy file="install.rdf.xml" tofile="install.rdf" overwrite="true">
+      <filterchain>
+        <replacetokens>
+          <token key="VERSION" value="${version}" />
+        </replacetokens>
+      </filterchain>
+    </copy>
+
+
+    <!-- Delete XPI if it exists. -->
     <delete file="${ant.project.name}-${version}.xpi"/>
+
+    
+    <!-- Bundle up the XPI file. -->
     <zip destfile="${ant.project.name}-${version}.xpi">
-    	<zipfileset dir="." includes="content/**" prefix="chrome"/>
-    	<!--
-      <zipfileset dir="." includes="${ant.project.name}.jar"
-                  prefix="chrome" />-->
-	   <zipfileset dir="." includes="install.rdf chrome.manifest" />
-	 </zip>
+      <zipfileset dir="." includes="content/**" prefix="chrome"/>
+      <zipfileset dir="." includes="install.rdf chrome.manifest" />
+    </zip>
   </target>
 
 </project>
