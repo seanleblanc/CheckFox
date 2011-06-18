@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+
+    <em:name>CheckFox</em:name>
+    <em:id>{BAEC7B80-9A31-47b2-A68B-DCAC8DF48E87}</em:id>
+    <em:version>@VERSION@</em:version>
+    <em:creator>Sean LeBlanc</em:creator>
+    <em:description>This enables quick check/uncheck of checkboxes.</em:description>
+    <em:homepageURL>http://pragcraft.wordpress.com/</em:homepageURL>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>1.0</em:minVersion>
+       <em:maxVersion>4.0.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:file>
+      <Description about="urn:mozilla:extension:file:checkfox.jar">
+        <em:package>content/</em:package>
+      </Description>
+    </em:file>
+
+  </Description>
+
+</RDF>
